@@ -3,7 +3,7 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
-const centerWidth = canvas.width/2;
+const centerWidth = (canvas.width/2);
 const centerHeight = canvas.height/2;
 
 //Classes creation: Background, Player and Enemies
@@ -55,18 +55,29 @@ class SunBall {
 //------------------------------------------------------------------------//
 //CLASSES INHERETANCE
 const bg = new Background();
-const player = new Player(centerWidth,centerHeight,100,100);
-const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
+const player = new Player((centerWidth - 45),(centerHeight-45),100,100);
+// const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
+
 
 
 //------------------------------------------------------------------------//
 //SCRIPTS//
 function animate(){
     requestAnimationFrame(animate);
-    ctx.clearRect(0,0,canvas.width,canvas.height)
-    bg.draw();
-    player.draw();
-    sunBall.draw()
+    //ctx.clearRect(0,0,canvas.width,canvas.height)
+    //bg.draw();
+    //player.draw();
+
 }
+
+
+
+window.addEventListener('click',(e)=>{
+
+    const sunBall = new SunBall(centerWidth,centerHeight,8,"green",{
+        x: 1,
+        y: 1,
+    });
+})
 
 animate()

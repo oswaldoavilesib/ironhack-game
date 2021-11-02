@@ -50,6 +50,11 @@ class SunBall {
         ctx.fillStyle = this.color;
         ctx.fill();
     }
+    update(){
+        this.draw()
+        this.x = this.x + this.velocity.x;
+        this.y = this.y + this.velocity.y
+    }
 }
 
 //------------------------------------------------------------------------//
@@ -58,26 +63,31 @@ const bg = new Background();
 const player = new Player((centerWidth - 45),(centerHeight-45),100,100);
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
+const sunBalls = []
 
 
 //------------------------------------------------------------------------//
 //SCRIPTS//
 function animate(){
     requestAnimationFrame(animate);
-    //ctx.clearRect(0,0,canvas.width,canvas.height)
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+    sunBalls.forEach((sunball)=>{
+        sunball.update()
+    })
     //bg.draw();
-    //player.draw();
-
+    player.draw();
 }
 
 
 
 window.addEventListener('click',(e)=>{
+    const angle = Math.atan2((e.clientY - (canvas.height/2)),(e.clientX - (canvas.width/2)));
+    const velocity = {
+        x: Math.cos(angle),
+        y: Math.sin(angle),
+    }
+    sunBalls.push(new SunBall(centerWidth,centerHeight,8,"green",velocity))
 
-    const sunBall = new SunBall(centerWidth,centerHeight,8,"green",{
-        x: 1,
-        y: 1,
-    });
 })
 
 animate()

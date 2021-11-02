@@ -36,10 +36,27 @@ class Player {
 
 }
 
+class SunBall {
+    constructor(x,y,radius,color,velocity){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.velocity = velocity;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.radius,0,Math.PI * 2,false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+}
+
 //------------------------------------------------------------------------//
 //CLASSES INHERETANCE
 const bg = new Background();
 const player = new Player(centerWidth,centerHeight,100,100);
+const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
 
 //------------------------------------------------------------------------//
@@ -49,6 +66,7 @@ function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height)
     bg.draw();
     player.draw();
+    sunBall.draw()
 }
 
 animate()

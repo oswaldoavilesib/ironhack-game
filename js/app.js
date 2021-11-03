@@ -94,13 +94,23 @@ const enemies = [];
 
 function createEnemies(){
     setInterval(()=>{
-        const x = 100;
-        const y = 100;
-        const radius = 30;
+        const radius = Math.random() * (30 - 10) + 10;
+        let x;
+        let y;
+        if(Math.random() < 0.5){
+            x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
+            y = Math.random() * canvas.height;
+
+            // y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius;
+        } else {
+            x = Math.random() * canvas.width;
+            y = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
+        }
         const color = "green"
+        const angle = Math.atan2((canvas.height/2) - y,(canvas.width/2)- x);
         const velocity = {
-            x: 1,
-            y: 1,
+            x: Math.cos(angle),
+            y: Math.sin(angle),
         }
         enemies.push(new Enemy(x,y,radius,color,velocity))
     },1000)
@@ -128,7 +138,7 @@ window.addEventListener('click',(e)=>{
         x: Math.cos(angle),
         y: Math.sin(angle),
     }
-    sunBalls.push(new SunBall(centerWidth,centerHeight,8,"green",velocity))
+    sunBalls.push(new SunBall(centerWidth,centerHeight,8,"red",velocity))
 
 })
 

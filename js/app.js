@@ -57,17 +57,56 @@ class SunBall {
     }
 }
 
+class Enemy {
+    constructor(x,y,radius,color,velocity){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.velocity = velocity;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.radius,0,Math.PI * 2,false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+    update(){
+        this.draw()
+        this.x = this.x + this.velocity.x;
+        this.y = this.y + this.velocity.y
+    }
+}
+
+
 //------------------------------------------------------------------------//
 //CLASSES INHERETANCE
 const bg = new Background();
 const player = new Player((centerWidth - 45),(centerHeight-45),100,100);
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
-const sunBalls = []
+const sunBalls = [];
+const enemies = [];
 
 
 //------------------------------------------------------------------------//
 //SCRIPTS//
+
+function createEnemies(){
+    setInterval(()=>{
+        const x = 100;
+        const y = 100;
+        const radius = 30;
+        const color = "green"
+        const velocity = {
+            x: 1,
+            y: 1,
+        }
+        enemies.push(new Enemy(x,y,radius,color,velocity))
+    },1000)
+}
+
+
 function animate(){
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,canvas.width,canvas.height)
@@ -76,6 +115,9 @@ function animate(){
     })
     //bg.draw();
     player.draw();
+    enemies.forEach((enemy)=>{
+        enemy.update()
+    })
 }
 
 
@@ -91,3 +133,4 @@ window.addEventListener('click',(e)=>{
 })
 
 animate()
+createEnemies()

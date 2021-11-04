@@ -2,6 +2,8 @@
 //DEFAULT VARIABLES
 const $clickCounter = document.querySelector("#click-counter span");
 const $killingCounter = document.querySelector("#killing-counter span");
+const $mouseLife = document.querySelector("#mouse-life span");
+
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
@@ -108,6 +110,10 @@ const enemies = [];
 //------------------------------------------------------------------------//
 //SCRIPTS//
 
+function updateMouseLife(){
+    $mouseLife.innerHTML = (150000 - numberOfClicks)
+}
+
 function createEnemies(){
     setInterval(()=>{
         const radius = Math.random() * (30 - 10) + 10;
@@ -167,6 +173,7 @@ function animate(){
     })
     $clickCounter.innerHTML = numberOfClicks;
     $killingCounter.innerHTML = enemiesKilled;
+    updateMouseLife()
     console.log(enemiesKilled)
 }
 

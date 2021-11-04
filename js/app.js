@@ -95,6 +95,8 @@ class Enemy {
 //CLASSES INHERETANCE
 const bg = new Background();
 const player = new Player(100,100);
+let enemiesKilled = 0;
+let numberOfClicks = 0;
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
 const sunBalls = [];
@@ -137,11 +139,10 @@ function animate(){
         sunball.update()
     })
     player.draw();
-    let enemiesKilled = 0;
     enemies.forEach((enemy,index)=>{
         enemy.update()
         if(player.collision(enemy)){
-            alert("Perdiste bruto")
+            console.log("PERDISTE")
         }
         // if(enemy.y > canvas.height){
         //     enemies.splice(index,1)
@@ -156,13 +157,13 @@ function animate(){
         sunBalls.forEach((sunBalls, sunBallsIndex)=>{
             const distance = Math.hypot(sunBalls.x - enemy.x,sunBalls.y - enemy.y);
             if(distance - enemy.radius - sunBalls.radius < 1){
-                enemiesKilled = enemiesKilled + 1;
-
+                enemiesKilled ++;
                 enemies.splice(index,1);
                 sunBalls.splice(sunBallsIndex,1);
             }
         })
     })
+    console.log(enemiesKilled)
 }
 
 
@@ -174,7 +175,8 @@ window.addEventListener('click',(e)=>{
         y: Math.sin(angle),
     }
     sunBalls.push(new SunBall(centerWidth,centerHeight,8,"red",velocity))
-    console.log(e)
+    numberOfClicks ++
+    console.log(numberOfClicks)
 })
 
 animate()

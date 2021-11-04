@@ -37,6 +37,15 @@ class Player {
 
     }
 
+    collision(item){
+        return(
+           this.x < item.x + item.radius &&
+            this.x + this.width > item.x &&
+            this.y < item.y + item.radius &&
+            this.y + this.height > item.y
+        )
+
+    }
 }
 
 class SunBall {
@@ -128,17 +137,29 @@ function animate(){
         sunball.update()
     })
     player.draw();
+    let enemiesKilled = 0;
     enemies.forEach((enemy,index)=>{
         enemy.update()
-        const distancePlayerSunBalls = Math.hypot(player.x - enemy.x,player.y - enemy.y)
-        if(distancePlayerSunBalls - enemy.radius - 50 < 1){
-            console.log(enemy.x)
+        if(player.collision(enemy)){
+            alert("Perdiste bruto")
         }
+        // if(enemy.y > canvas.height){
+        //     enemies.splice(index,1)
+        // }
+        // if(enemy.x < 0){
+        //     enemies.splice(index,1)
+        //}
+        // const distancePlayerSunBalls = Math.hypot((player.x + 50) - enemy.x,(player.y + 50) - enemy.y)
+        // if(distancePlayerSunBalls - enemy.radius - 50 < 1){
+        //     console.log("SHIT")
+        // }
         sunBalls.forEach((sunBalls, sunBallsIndex)=>{
             const distance = Math.hypot(sunBalls.x - enemy.x,sunBalls.y - enemy.y);
             if(distance - enemy.radius - sunBalls.radius < 1){
-                    enemies.splice(index,1);
-                    sunBalls.splice(sunBallsIndex,1);
+                enemiesKilled = enemiesKilled + 1;
+
+                enemies.splice(index,1);
+                sunBalls.splice(sunBallsIndex,1);
             }
         })
     })

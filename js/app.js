@@ -3,8 +3,10 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
-const centerWidth = (canvas.width/2);
+const centerWidth = canvas.width/2;
 const centerHeight = canvas.height/2;
+
+let requestId;
 
 //Classes creation: Background, Player and Enemies
 class Background{
@@ -22,9 +24,9 @@ class Background{
 }
 
 class Player {
-    constructor(x,y,w,h){
-        this.x = x;
-        this.y = y;
+    constructor(w,h){
+        this.x = canvas.width/2 - 50;
+        this.y = canvas.height/2 - 50;
         this.width = w;
         this.height = h;
         this.img = new Image()
@@ -32,6 +34,7 @@ class Player {
     }
     draw(){
         ctx.drawImage(this.img,this.x,this.y,this.width,this.height)
+
     }
 
 }
@@ -82,7 +85,7 @@ class Enemy {
 //------------------------------------------------------------------------//
 //CLASSES INHERETANCE
 const bg = new Background();
-const player = new Player((centerWidth - 45),(centerHeight-45),100,100);
+const player = new Player(100,100);
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
 const sunBalls = [];
@@ -120,13 +123,24 @@ function createEnemies(){
 function animate(){
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,canvas.width,canvas.height)
+    bg.draw();
     sunBalls.forEach((sunball)=>{
         sunball.update()
     })
-    //bg.draw();
     player.draw();
-    enemies.forEach((enemy)=>{
+    enemies.forEach((enemy,index)=>{
         enemy.update()
+        const distancePlayerSunBalls = Math.hypot(player.x - enemy.x,player.y - enemy.y)
+        if(distancePlayerSunBalls - enemy.radius - 50 < 1){
+            console.log(enemy.x)
+        }
+        sunBalls.forEach((sunBalls, sunBallsIndex)=>{
+            const distance = Math.hypot(sunBalls.x - enemy.x,sunBalls.y - enemy.y);
+            if(distance - enemy.radius - sunBalls.radius < 1){
+                    enemies.splice(index,1);
+                    sunBalls.splice(sunBallsIndex,1);
+            }
+        })
     })
 }
 
@@ -139,7 +153,7 @@ window.addEventListener('click',(e)=>{
         y: Math.sin(angle),
     }
     sunBalls.push(new SunBall(centerWidth,centerHeight,8,"red",velocity))
-
+    console.log(e)
 })
 
 animate()

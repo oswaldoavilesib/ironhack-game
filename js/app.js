@@ -1,5 +1,7 @@
 //------------------------------------------------------------------------//
 //DEFAULT VARIABLES
+const $clickCounter = document.querySelector("#click-counter span");
+const $killingCounter = document.querySelector("#killing-counter span");
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
@@ -163,6 +165,8 @@ function animate(){
             }
         })
     })
+    $clickCounter.innerHTML = numberOfClicks;
+    $killingCounter.innerHTML = enemiesKilled;
     console.log(enemiesKilled)
 }
 

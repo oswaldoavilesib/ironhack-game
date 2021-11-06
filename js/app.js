@@ -128,7 +128,8 @@ function createEnemies(){
             x = Math.random() * canvas.width;
             y = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
         }
-        const color = "green"
+        const color = `rgb(${Math.random()*251},${Math.random()*251},${Math.random()*251})`
+        "green"
         const angle = Math.atan2((canvas.height/2) - y,(canvas.width/2)- x);
         const velocity = {
             x: Math.cos(angle),
@@ -140,17 +141,27 @@ function createEnemies(){
 
 
 function animate(){
-    requestAnimationFrame(animate);
+    requestId = requestAnimationFrame(animate);
     ctx.clearRect(0,0,canvas.width,canvas.height)
     bg.draw();
-    sunBalls.forEach((sunball)=>{
-        sunball.update()
+    sunBalls.forEach((sunBall,sunBallIndex)=>{
+        sunBall.update()
+        if(sunBall.x + sunBall.radius < 0 || 
+            sunBall.x - sunBall.radius > canvas.width || 
+            sunBall.y + sunBall.radius < 0 || 
+            sunBall.y - sunBall.radius >canvas.height){
+            setTimeout(() =>{
+                sunBalls.splice(sunBallIndex,1)
+            },0)
+        }
+
     })
     player.draw();
     enemies.forEach((enemy,index)=>{
         enemy.update()
+
         if(player.collision(enemy)){
-            console.log("PERDISTE")
+            cancelAnimationFrame(requestId)
         }
         // if(enemy.y > canvas.height){
         //     enemies.splice(index,1)
@@ -180,10 +191,11 @@ function animate(){
 
 
 window.addEventListener('click',(e)=>{
+    console.log(sunBalls)
     const angle = Math.atan2((e.clientY - (canvas.height/2)),(e.clientX - (canvas.width/2)));
     const velocity = {
-        x: Math.cos(angle),
-        y: Math.sin(angle),
+        x: Math.cos(angle) * 3,
+        y: Math.sin(angle) * 3,
     }
     sunBalls.push(new SunBall(centerWidth,centerHeight,8,"red",velocity))
     numberOfClicks ++
@@ -192,3 +204,5 @@ window.addEventListener('click',(e)=>{
 
 animate()
 createEnemies()
+
+

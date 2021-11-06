@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  background-color: #0c0c0c;
+  background-color: #040605;
 }
 #canvas {
   margin: 0;
 }
 
 .flex-container {
-  background-color: #0c0c0c;
+  background-color: #040605;
   color: white;
   margin: 0;
   display: flex;
@@ -41,9 +41,17 @@ button {
   font-weight: bold;
 }
 
+.start-game:hover {
+  background-color: #e02401;
+}
+
 .reed-instructions {
   background-color: rgba(150, 150, 150, 0);
   border: 1px solid #01c7fe;
   color: #01c7fe;
   font-weight: bold;
+}
+
+.reed-instructions:hover {
+  background-color: WHITE;
 }

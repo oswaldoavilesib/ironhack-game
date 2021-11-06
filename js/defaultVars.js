@@ -16,6 +16,10 @@ audioGameOver.src = "../audio/gameover.mp3"
 const audioHit = new Audio();
 audioHit.src = "../audio/destruction.wav"
 
+const $startBtn = document.querySelector(".start-game")
+ //Select start game button
+const $instructionsBtn = document.querySelector(".reed-instructions")//Read instructions
+
 
 const $clickCounter = document.querySelector("#click-counter span"); //Seleccionar el texto del elemento contador de clics
 

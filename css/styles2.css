@@ -1,0 +1,41 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.cta {
+  font-size: 4rem;
+}
+
+mark {
+  background-color: red;
+  color: white;
+}
+
+button {
+  font-size: 24px;
+  margin: 15px;
+  padding: 25px 100px;
+  border: 0;
+  border-radius: 5px;
+}
+.start-game {
+  background-color: #01c7fe;
+  color: white;
+  font-weight: bold;
+}
+
+.start-game a {
+  color: white;
+  font-size: 1.8rem;
+  text-decoration: none;
+}

@@ -67,16 +67,6 @@ function animate(){
         if(player.collision(enemy)){
             cancelAnimationFrame(requestId)
         }
-        // if(enemy.y > canvas.height){
-        //     enemies.splice(index,1)
-        // }
-        // if(enemy.x < 0){
-        //     enemies.splice(index,1)
-        //}
-        // const distancePlayerSunBalls = Math.hypot((player.x + 50) - enemy.x,(player.y + 50) - enemy.y)
-        // if(distancePlayerSunBalls - enemy.radius - 50 < 1){
-        //     console.log("SHIT")
-        // }
         sunBalls.forEach((sunBalls, sunBallsIndex)=>{
             const distance = Math.hypot(sunBalls.x - enemy.x,sunBalls.y - enemy.y);
             if(distance - enemy.radius - sunBalls.radius < 1){
@@ -90,13 +80,9 @@ function animate(){
     $clickCounter.innerHTML = numberOfClicks;
     $killingCounter.innerHTML = enemiesKilled;
     updateMouseLife()
-    console.log(enemiesKilled)
 }
 
-
-
 window.addEventListener('click',(e)=>{
-    console.log(e.clientY, e.clientX)
     const angle = Math.atan2((e.clientY - (canvas.height/2)),(e.clientX - (canvas.width/2)));
     const velocity = {
         x: Math.cos(angle) * 3,
@@ -104,8 +90,11 @@ window.addEventListener('click',(e)=>{
     }
     sunBalls.push(new SunBall(centerWidth,centerHeight,8,"red",velocity))
     numberOfClicks ++
-    console.log(numberOfClicks)
 })
+
+function updateMouseLife(){
+    $mouseLife.innerHTML = (150000 - numberOfClicks)
+}
 
 // animate()
 // createEnemies()

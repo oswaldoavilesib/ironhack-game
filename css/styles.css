@@ -35,6 +35,7 @@ button {
   border: 0;
   border-radius: 5px;
 }
+
 .start-game {
   background-color: #01c7fe;
   color: white;
@@ -50,6 +51,11 @@ button {
   border: 1px solid #01c7fe;
   color: #01c7fe;
   font-weight: bold;
+}
+
+.reed-instructions a {
+  color: #01c7fe;
+  text-decoration: none;
 }
 
 .reed-instructions:hover {

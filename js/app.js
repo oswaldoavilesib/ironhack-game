@@ -1,16 +1,5 @@
 //------------------------------------------------------------------------//
 //DEFAULT VARIABLES
-const $clickCounter = document.querySelector("#click-counter span");
-const $killingCounter = document.querySelector("#killing-counter span");
-const $mouseLife = document.querySelector("#mouse-life span");
-
-const canvas = document.getElementById("canvas")
-const ctx = canvas.getContext("2d")
-
-const centerWidth = canvas.width/2;
-const centerHeight = canvas.height/2;
-
-let requestId;
 
 //Classes creation: Background, Player and Enemies
 class Background{

@@ -20,7 +20,7 @@ class Background{
         this.width = w;
         this.height = h;
         this.img = new Image()
-        this.img.src = "../images/space.jpg"
+        this.img.src = "../images/space1.jpg"
     }
     draw(){
         ctx.drawImage(this.img,this.x,this.y,canvas.width,canvas.height)
@@ -35,6 +35,8 @@ class Player {
         this.height = h;
         this.img = new Image()
         this.img.src = "../images/sun.png"
+        this.imgGameOver = new Image()
+        this.imgGameOver.src = "../images/gameover.gif"
     }
     draw(){
         ctx.drawImage(this.img,this.x,this.y,this.width,this.height)
@@ -42,13 +44,17 @@ class Player {
     }
 
     collision(item){
-        return(
-           this.x < item.x + item.radius &&
+        if(
+            this.x < item.x + item.radius &&
             this.x + this.width > item.x &&
             this.y < item.y + item.radius &&
             this.y + this.height > item.y
-        )
-
+        ) {
+            audioGameOver.play()
+            audioGame.pause()
+            ctx.drawImage(this.imgGameOver,450,100,800,500)
+            return true;
+        }
     }
 }
 
@@ -90,7 +96,7 @@ class Enemy {
     update(){
         this.draw()
         this.x = this.x + this.velocity.x;
-        this.y = this.y + this.velocity.y
+        this.y = this.y + this.velocity.y;
     }
 }
 
@@ -101,6 +107,12 @@ const bg = new Background();
 const player = new Player(100,100);
 let enemiesKilled = 0;
 let numberOfClicks = 0;
+const audioGame = new Audio();
+audioGame.src = "../audio/audiogame.mp3"
+const audioGameOver = new Audio();
+audioGameOver.src = "../audio/gameover.mp3"
+const audioHit = new Audio();
+audioHit.src = "../audio/destruction.wav"
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
 const sunBalls = [];
@@ -144,6 +156,7 @@ function animate(){
     requestId = requestAnimationFrame(animate);
     ctx.clearRect(0,0,canvas.width,canvas.height)
     bg.draw();
+    audioGame.play()
     sunBalls.forEach((sunBall,sunBallIndex)=>{
         sunBall.update()
         if(sunBall.x + sunBall.radius < 0 || 
@@ -177,6 +190,7 @@ function animate(){
             const distance = Math.hypot(sunBalls.x - enemy.x,sunBalls.y - enemy.y);
             if(distance - enemy.radius - sunBalls.radius < 1){
                 enemiesKilled ++;
+                audioHit.play()
                 enemies.splice(index,1);
                 sunBalls.splice(sunBallsIndex,1);
             }
@@ -191,7 +205,7 @@ function animate(){
 
 
 window.addEventListener('click',(e)=>{
-    console.log(sunBalls)
+    console.log(e.clientY, e.clientX)
     const angle = Math.atan2((e.clientY - (canvas.height/2)),(e.clientX - (canvas.width/2)));
     const velocity = {
         x: Math.cos(angle) * 3,

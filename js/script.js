@@ -2,7 +2,7 @@
 let bg = new Background();
 let player = new Player(100,100);
 let gameOverNow = new GameOver()
-$resetContainer.style.display = "none"
+$resetContainer.style.display = "flex"
 
 window.onload = function() { // dibujar background y player
     bg.draw()
@@ -120,6 +120,8 @@ function gameOver(){
             audioGameOver.play()
             audioGame.pause()
             $finalClicsPoints.innerText = numberOfClicks;
+            $finalKills.innerText = enemiesKilled;
+            $mouseClicksLeft.innerText = Number($mouseLife.innerText - numberOfClicks);
             cancelAnimationFrame(requestId)
         }
     })

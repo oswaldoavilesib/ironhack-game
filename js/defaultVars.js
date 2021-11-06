@@ -26,14 +26,16 @@ const $resetGameBtn = document.getElementById("reset-btn") //boton de resetear e
 
 const $resetContainer = document.getElementById("reset-container") //Contenedor del resumen del juego
 
-const $finalClicsPoints = document.getElementById("final-clics")
-
-
 const $clickCounter = document.querySelector("#click-counter span"); //Seleccionar el texto del elemento contador de clics
 
 const $killingCounter = document.querySelector("#killing-counter span"); //Seleccionar el texto del elemento contador de enemigos asesinados
 
 const $mouseLife = document.querySelector("#mouse-life span"); //Seleccionar el texto del elemento que va a restar los clics a la vida útil del mouse
+
+const $finalClicsPoints = document.getElementById("final-clics")
+const $finalKills = document.getElementById("final-kills")
+const $mouseClicksLeft = document.getElementById("mouse-life-left")
+
 
 let enemiesKilled = 0;
 let numberOfClicks = 0;

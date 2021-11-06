@@ -8,12 +8,14 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="title">
+        <h1>The Mouse Breaker</h1>
+    </div>
     <canvas id="canvas" height="600" width="1700"></canvas>
     <div class="buttons-container">
         <button class="start-game">Start Game</button>
         <button class="reed-instructions"><a href="./page/instrucctions.html">Read Instructions</a></button>
     </div>
-
     <div class="flex-container">
         <div>
             <h2 id="click-counter">Number of clicks: <span>0</span></h2>
@@ -25,7 +27,16 @@
             <h2 id="mouse-life">Mouse Life: <span>1,500,0000</span></h2>
         </div>
     </div>
-
+    <div id="reset-container" class="reset-game">
+        <div class="bg">
+            <h1>You just let earth be killed</h1>
+            <h2 id="final-clics" class="points">0</h2>
+            <p>Número de Clics</p>
+            <div>
+                <button id="reset-btn" class="start-game">Start Game</button>
+            </div>
+        </div>
+    </div>
     <script src="./js/defaultVars.js"></script>
     <script src="./js/app.js"></script>
     <script src="./js/script.js"></script>

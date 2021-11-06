@@ -6,8 +6,8 @@ const centerHeight = canvas.height/2; //Centrar elementos en el canvas a lo alto
 
 let requestId;
 
-const sunBalls = [];
-const enemies = [];
+let sunBalls = [];
+let enemies = [];
 
 const audioGame = new Audio();
 audioGame.src = "../audio/audiogame.mp3"
@@ -16,9 +16,17 @@ audioGameOver.src = "../audio/gameover.mp3"
 const audioHit = new Audio();
 audioHit.src = "../audio/destruction.wav"
 
-const $startBtn = document.querySelector(".start-game")
- //Select start game button
+const $startBtn = document.querySelector(".start-game") //seleccionar botón de comenzar
+
+
+ //Select instructions button
 const $instructionsBtn = document.querySelector(".reed-instructions")//Read instructions
+
+const $resetGameBtn = document.getElementById("reset-btn") //boton de resetear el juego
+
+const $resetContainer = document.getElementById("reset-container") //Contenedor del resumen del juego
+
+const $finalClicsPoints = document.getElementById("final-clics")
 
 
 const $clickCounter = document.querySelector("#click-counter span"); //Seleccionar el texto del elemento contador de clics

@@ -6,6 +6,20 @@ body {
   margin: 0;
 }
 
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
 .flex-container {
   background-color: #040605;
   color: white;
@@ -61,3 +75,43 @@ button {
 .reed-instructions:hover {
   background-color: WHITE;
 }
+
+.reset-game {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg {
+  align-items: center;
+  background-color: white;
+  width: 50%;
+  padding: 25px 30px;
+  display: flex;
+  flex-flow: column;
+}
+
+.bg h1 {
+  color: red;
+  font-size: 40px;
+}
+
+.bg h2 {
+  font-size: 70px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.bg p {
+  color: gray;
+}
+
+/* 
+display: flex;
+align-items: center;
+justify-content: center; */

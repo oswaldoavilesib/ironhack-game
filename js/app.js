@@ -21,8 +21,6 @@ class Player {
         this.height = h;
         this.img = new Image()
         this.img.src = "../images/sun.png"
-        this.imgGameOver = new Image()
-        this.imgGameOver.src = "../images/gameover.gif"
     }
     draw(){
         ctx.drawImage(this.img,this.x,this.y,this.width,this.height)
@@ -36,9 +34,6 @@ class Player {
             this.y < item.y + item.radius &&
             this.y + this.height > item.y
         ) {
-            audioGameOver.play()
-            audioGame.pause()
-            ctx.drawImage(this.imgGameOver,450,100,800,500)
             return true;
         }
     }
@@ -58,6 +53,7 @@ class SunBall {
         ctx.fillStyle = this.color;
         ctx.fill();
     }
+
     update(){
         this.draw()
         this.x = this.x + this.velocity.x;
@@ -85,6 +81,25 @@ class Enemy {
         this.y = this.y + this.velocity.y;
     }
 }
+
+class GameOver {
+    constructor(){
+        this.x = 450;
+        this.y = 100;
+        this.width = 800;
+        this.height = 500;
+        this.imgGameOver = new Image()
+        this.imgGameOver.src = "../images/gameover.gif"
+    }
+    draw(){
+        audioGameOver.play()
+        audioGame.pause()
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ctx.globalAlpha = 1;
+        ctx.drawImage(this.imgGameOver,this.x,this.y,this.width,this.height)
+    }
+}
+
 
 
 //------------------------------------------------------------------------//

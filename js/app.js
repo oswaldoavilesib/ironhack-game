@@ -94,14 +94,7 @@ class Enemy {
 //CLASSES INHERETANCE
 const bg = new Background();
 const player = new Player(100,100);
-let enemiesKilled = 0;
-let numberOfClicks = 0;
-const audioGame = new Audio();
-audioGame.src = "../audio/audiogame.mp3"
-const audioGameOver = new Audio();
-audioGameOver.src = "../audio/gameover.mp3"
-const audioHit = new Audio();
-audioHit.src = "../audio/destruction.wav"
+
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
 const sunBalls = [];

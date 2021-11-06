@@ -97,8 +97,6 @@ const player = new Player(100,100);
 
 // const sunBall = new SunBall(centerWidth,centerHeight,8,"green",null)
 
-const sunBalls = [];
-const enemies = [];
 
 
 //------------------------------------------------------------------------//

@@ -6,6 +6,9 @@ const centerHeight = canvas.height/2; //Centrar elementos en el canvas a lo alto
 
 let requestId;
 
+const sunBalls = [];
+const enemies = [];
+
 const audioGame = new Audio();
 audioGame.src = "../audio/audiogame.mp3"
 const audioGameOver = new Audio();

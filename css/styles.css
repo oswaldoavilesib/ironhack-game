@@ -12,6 +12,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: space-evenly;
+  margin: 0;
 }
 
 .flex-container h2,
@@ -19,4 +20,30 @@ span {
   font-size: 45px;
   font-size: 45px;
   color: white;
+  margin: 0;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  font-size: 24px;
+  margin: 15px;
+  padding: 25px 100px;
+  border: 0;
+  border-radius: 5px;
+}
+.start-game {
+  background-color: #01c7fe;
+  color: white;
+  font-weight: bold;
+}
+
+.reed-instructions {
+  background-color: rgba(150, 150, 150, 0);
+  border: 1px solid #01c7fe;
+  color: #01c7fe;
+  font-weight: bold;
 }

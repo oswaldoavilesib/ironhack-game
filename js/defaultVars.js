@@ -36,6 +36,7 @@ const $finalClicsPoints = document.getElementById("final-clics")
 const $finalKills = document.getElementById("final-kills")
 const $mouseClicksLeft = document.getElementById("mouse-life-left")
 
+const $startGameContainer = document.querySelector(".buttons-container")
 
 let enemiesKilled = 0;
 let numberOfClicks = 0;

@@ -2,7 +2,7 @@
 let bg = new Background();
 let player = new Player(100,100);
 let gameOverNow = new GameOver()
-$resetContainer.style.display = "flex"
+$resetContainer.style.display = "none"
 
 window.onload = function() { // dibujar background y player
     bg.draw()
@@ -22,16 +22,18 @@ function resetAll(){
 $startBtn.onclick = function() { //Llamar a crear enemigos y animar
     startGame()
     createEnemies()
+    $startGameContainer.style.display = "none"
 }
 
 $resetGameBtn.onclick = function() { //Llamar a crear enemigos y animar
     resetAll();
+    $resetContainer.style.display = "none"
     startGame()
     createEnemies()
-    $resetContainer.style.display = "none"
 }
 
 function startGame(){ //Comienza el juego/animación
+
     requestId = requestAnimationFrame(startGame);
     ctx.clearRect(0,0,canvas.width,canvas.height)
     bg.draw();

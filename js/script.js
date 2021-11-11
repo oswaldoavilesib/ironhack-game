@@ -66,8 +66,6 @@ function createEnemies(){
             x: Math.cos(angle),//Convertimos el radian en coseno+,
             y: Math.sin(angle),//convertimos en radian en seno+,
         }
-        const img = new Image();
-        img.src = "../images/alien1.png"
         enemies.push(new Enemy(x,y,radius,color,velocity)) //Creamos el array de enemigos desde donde vamos a empezar a mostrarlos
     },500)
 }

@@ -68,12 +68,16 @@ class Enemy {
         this.radius = radius;
         this.color = color;
         this.velocity = velocity;
+        this.image = new Image();
+        this.image.src = "../images/alien2.png"
     }
     draw(){
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.radius,0,Math.PI * 2,false);
         ctx.fillStyle = this.color;
         ctx.fill();
+        ctx.drawImage(this.image,this.x,this.y,50,50)
+        ctx.textAlign = "center"
     }
     update(){
         this.draw()

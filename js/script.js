@@ -1,8 +1,8 @@
 
 let bg = new Background();
 let player = new Player(100,100);
-let gameOverNow = new GameOver()
 $resetContainer.style.display = "none"
+$winContainer.style.display = "none"
 
 window.onload = function() { // dibujar background y player
     bg.draw()
@@ -66,6 +66,8 @@ function createEnemies(){
             x: Math.cos(angle),//Convertimos el radian en coseno+,
             y: Math.sin(angle),//convertimos en radian en seno+,
         }
+        const img = new Image();
+        img.src = "../images/alien1.png"
         enemies.push(new Enemy(x,y,radius,color,velocity)) //Creamos el array de enemigos desde donde vamos a empezar a mostrarlos
     },500)
 }
@@ -83,7 +85,7 @@ window.addEventListener('click',(e)=>{
 })
 
 function updateMouseLife(){
-    $mouseLife.innerHTML = (150000 - numberOfClicks)
+    $mouseLife.innerHTML = (1500000 - numberOfClicks)
 }
 
 function destroyLostSunBalls(){ //Eliminar los sun balls que se salen del canvas
@@ -129,5 +131,12 @@ function gameOver(){
     })
 }
 
-// animate()
-// createEnemies()
+
+
+addEventListener('keydown', (e)=>{
+        if(e.keyCode === 32){
+            $winContainer.style.display = "flex"
+            cancelAnimationFrame(requestId)
+
+        }
+    })

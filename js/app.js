@@ -82,31 +82,3 @@ class Enemy {
     }
 }
 
-class GameOver {
-    constructor(){
-        this.x = 450;
-        this.y = 100;
-        this.width = 800;
-        this.height = 500;
-        this.imgGameOver = new Image()
-        this.imgGameOver.src = "../images/gameover.gif"
-    }
-    draw(){
-        audioGameOver.play()
-        audioGame.pause()
-        ctx.clearRect(0,0,canvas.width,canvas.height)
-        ctx.globalAlpha = 1;
-        ctx.drawImage(this.imgGameOver,this.x,this.y,this.width,this.height)
-    }
-}
-
-
-
-//------------------------------------------------------------------------//
-//CLASSES INHERETANCE
-
-
-//------------------------------------------------------------------------//
-//SCRIPTS//
-
-

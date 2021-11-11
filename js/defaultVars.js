@@ -8,6 +8,8 @@ let requestId;
 
 let sunBalls = [];
 let enemies = [];
+let aliens = ["../images/alien1.png","../images/alien2.png"]
+
 
 const audioGame = new Audio();
 audioGame.src = "../audio/audiogame.mp3"
@@ -37,6 +39,8 @@ const $finalKills = document.getElementById("final-kills")
 const $mouseClicksLeft = document.getElementById("mouse-life-left")
 
 const $startGameContainer = document.querySelector(".buttons-container")
+
+const $winContainer = document.getElementById("win-container")
 
 let enemiesKilled = 0;
 let numberOfClicks = 0;

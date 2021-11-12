@@ -6,7 +6,7 @@ class Background{
         this.width = w;
         this.height = h;
         this.img = new Image()
-        this.img.src = "../images/space1.jpg"
+        this.img.src = "./images/space1.jpg"
     }
     draw(){
         ctx.drawImage(this.img,this.x,this.y,canvas.width,canvas.height)
@@ -20,7 +20,7 @@ class Player {
         this.width = w;
         this.height = h;
         this.img = new Image()
-        this.img.src = "../images/sun.png"
+        this.img.src = "./images/sun.png"
     }
     draw(){
         ctx.drawImage(this.img,this.x,this.y,this.width,this.height)
@@ -69,7 +69,7 @@ class Enemy {
         this.color = color;
         this.velocity = velocity;
         this.image = new Image();
-        this.image.src = "../images/alien2.png"
+        this.image.src = "./images/alien2.png"
     }
     draw(){
         ctx.beginPath();

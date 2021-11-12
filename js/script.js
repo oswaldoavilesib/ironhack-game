@@ -50,7 +50,7 @@ function startGame(){ //Comienza el juego/animación
 
 function createEnemies(){
     setInterval(()=>{ //Hacer que vayan apareciendo enemigos
-        const radius = Math.random() * (30 - 10) + 10; //Randomizar el tamaño
+        const radius = Math.random() * (100 - 10) + 10; //Randomizar el tamaño
         let x; //randomizar el punto en x
         let y; //randomizar el punto en y
         if(Math.random() < 0.5){ //Hacer que desde fuera de X y Y
@@ -60,7 +60,7 @@ function createEnemies(){
             x = Math.random() * canvas.width;
             y = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
         }
-        const color = `rgb(${Math.random()*251},${Math.random()*251},${Math.random()*251})`//Randomizar los colores de los enemigos
+        const color = `rgba(${Math.random()*251},${Math.random()*251},${Math.random()*251,0.0})`//Randomizar los colores de los enemigos
         const angle = Math.atan2((canvas.height/2) - y,(canvas.width/2)- x);// hacer que los enemigos se dirijan hacia el centro
         const velocity = {//Lo pasamos como argumento a la clase Enemy para que se dirijan al centro
             x: Math.cos(angle),//Convertimos el radian en coseno+,

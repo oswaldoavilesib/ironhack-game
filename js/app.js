@@ -76,7 +76,7 @@ class Enemy {
         ctx.arc(this.x,this.y,this.radius,0,Math.PI * 2,false);
         ctx.fillStyle = this.color;
         ctx.fill();
-        ctx.drawImage(this.image,this.x,this.y,50,50)
+        ctx.drawImage(this.image,this.x - (this.radius/2),this.y - (this.radius/2),this.radius,this.radius)
         ctx.textAlign = "center"
     }
     update(){

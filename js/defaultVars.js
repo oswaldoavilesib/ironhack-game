@@ -8,15 +8,15 @@ let requestId;
 
 let sunBalls = [];
 let enemies = [];
-let aliens = ["../images/alien1.png","../images/alien2.png"]
+let aliens = ["./images/alien1.png","./images/alien2.png"]
 
 
 const audioGame = new Audio();
-audioGame.src = "../audio/audiogame.mp3"
+audioGame.src = "./audio/audiogame.mp3"
 const audioGameOver = new Audio();
-audioGameOver.src = "../audio/gameover.mp3"
+audioGameOver.src = "./audio/gameover.mp3"
 const audioHit = new Audio();
-audioHit.src = "../audio/destruction.wav"
+audioHit.src = "./audio/destruction.wav"
 
 const $startBtn = document.querySelector(".start-game") //seleccionar botón de comenzar
 
